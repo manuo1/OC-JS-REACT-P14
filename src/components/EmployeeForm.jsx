@@ -1,4 +1,6 @@
 import { useState } from "react";
+import states from "../data/states";
+import departments from "../data/departments";
 
 function EmployeeForm({ onSubmit }) {
   const [formData, setFormData] = useState({
@@ -60,12 +62,20 @@ function EmployeeForm({ onSubmit }) {
         value={formData.startDate}
         onChange={handleChange}
       />
-      <input
+
+      <select
         name="department"
-        placeholder="Department"
         value={formData.department}
         onChange={handleChange}
-      />
+      >
+        <option value="">Select Department</option>
+        {departments.map((dep) => (
+          <option key={dep} value={dep}>
+            {dep}
+          </option>
+        ))}
+      </select>
+
       <input
         name="street"
         placeholder="Street"
@@ -78,18 +88,23 @@ function EmployeeForm({ onSubmit }) {
         value={formData.city}
         onChange={handleChange}
       />
-      <input
-        name="state"
-        placeholder="State"
-        value={formData.state}
-        onChange={handleChange}
-      />
+
+      <select name="state" value={formData.state} onChange={handleChange}>
+        <option value="">Select State</option>
+        {states.map((st) => (
+          <option key={st} value={st}>
+            {st}
+          </option>
+        ))}
+      </select>
+
       <input
         name="zipCode"
         placeholder="Zip Code"
         value={formData.zipCode}
         onChange={handleChange}
       />
+
       <button type="submit">Save</button>
     </form>
   );
