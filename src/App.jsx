@@ -1,9 +1,14 @@
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import CreateEmployeePage from "./pages/CreateEmployeePage";
+
 function App() {
   return (
-    <div>
-      <h1>HRnet – React Migration</h1>
-      <p>Welcome to the new React version of HRnet.</p>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<CreateEmployeePage />} />
+      </Route>
+    </Routes>
   );
 }
 
