@@ -1,8 +1,23 @@
+import useEmployeeStore from "../store/useEmployeeStore";
+import EmployeeForm from "../components/EmployeeForm";
+
 function CreateEmployeePage() {
+  const { addEmployee, employees } = useEmployeeStore();
+
   return (
     <div>
       <h2>Create Employee</h2>
-      <p>Start creating your employee form here.</p>
+      <EmployeeForm onSubmit={addEmployee} />
+
+      <hr />
+      <h3>Employees (debug)</h3>
+      <ul>
+        {employees.map((emp, index) => (
+          <li key={index}>
+            {emp.firstName} {emp.lastName}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

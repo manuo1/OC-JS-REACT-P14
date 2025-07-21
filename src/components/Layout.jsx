@@ -10,7 +10,7 @@ function Layout() {
         </nav>
       </header>
 
-      <main style={{ padding: "1rem" }}>
+      <main>
         <Outlet />
       </main>
     </div>
