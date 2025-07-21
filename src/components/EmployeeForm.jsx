@@ -3,28 +3,8 @@ import useEmployeeStore from "../store/useEmployeeStore";
 import TextInput from "./inputs/TextInput";
 import SelectInput from "./inputs/SelectInput";
 import styles from "./EmployeeForm.module.scss";
-
-const states = [
-  "Alabama",
-  "Alaska",
-  "Arizona",
-  "Arkansas",
-  "California",
-  "Colorado",
-  "Connecticut",
-  "Delaware",
-  "Florida",
-  "Georgia",
-  // … ajoute les autres ou charge depuis un fichier séparé si besoin
-];
-
-const departments = [
-  "Sales",
-  "Marketing",
-  "Engineering",
-  "Human Resources",
-  "Legal",
-];
+import states from "../data/states";
+import departments from "../data/departments";
 
 function EmployeeForm() {
   const { addEmployee } = useEmployeeStore();
