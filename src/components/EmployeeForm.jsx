@@ -1,108 +1,167 @@
 import { useState } from "react";
-import states from "../data/states";
-import departments from "../data/departments";
+import useEmployeeStore from "../store/useEmployeeStore";
+import TextInput from "./inputs/TextInput";
+import SelectInput from "./inputs/SelectInput";
+import styles from "./EmployeeForm.module.scss";
 
-function EmployeeForm({ onSubmit }) {
+const states = [
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "Florida",
+  "Georgia",
+  // … ajoute les autres ou charge depuis un fichier séparé si besoin
+];
+
+const departments = [
+  "Sales",
+  "Marketing",
+  "Engineering",
+  "Human Resources",
+  "Legal",
+];
+
+function EmployeeForm() {
+  const { addEmployee } = useEmployeeStore();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     dateOfBirth: "",
     startDate: "",
-    department: "",
     street: "",
     city: "",
     state: "",
     zipCode: "",
+    department: "",
   });
 
-  const handleChange = (e) => {
+  const [errors, setErrors] = useState({});
+
+  function handleChange(e) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    onSubmit(formData);
+    const validationErrors = validate(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    addEmployee(formData);
     setFormData({
       firstName: "",
       lastName: "",
       dateOfBirth: "",
       startDate: "",
-      department: "",
       street: "",
       city: "",
       state: "",
       zipCode: "",
+      department: "",
     });
-  };
+    setErrors({});
+  }
+
+  function validate(data) {
+    const newErrors = {};
+    if (!data.firstName.trim()) newErrors.firstName = "First name is required.";
+    if (!data.lastName.trim()) newErrors.lastName = "Last name is required.";
+    if (!data.dateOfBirth) newErrors.dateOfBirth = "Date of birth is required.";
+    if (!data.startDate) newErrors.startDate = "Start date is required.";
+    if (!data.street.trim()) newErrors.street = "Street is required.";
+    if (!data.city.trim()) newErrors.city = "City is required.";
+    if (!data.state) newErrors.state = "State is required.";
+    if (!data.zipCode.trim()) newErrors.zipCode = "Zip code is required.";
+    if (!/^\d{5}$/.test(data.zipCode)) newErrors.zipCode = "Invalid zip code.";
+    if (!data.department) newErrors.department = "Department is required.";
+    return newErrors;
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <TextInput
         name="firstName"
-        placeholder="First Name"
+        label="First Name"
         value={formData.firstName}
         onChange={handleChange}
+        error={errors.firstName}
       />
-      <input
+
+      <TextInput
         name="lastName"
-        placeholder="Last Name"
+        label="Last Name"
         value={formData.lastName}
         onChange={handleChange}
+        error={errors.lastName}
       />
-      <input
-        type="date"
+
+      <TextInput
         name="dateOfBirth"
+        label="Date of Birth"
+        type="date"
         value={formData.dateOfBirth}
         onChange={handleChange}
+        error={errors.dateOfBirth}
       />
-      <input
-        type="date"
+
+      <TextInput
         name="startDate"
+        label="Start Date"
+        type="date"
         value={formData.startDate}
         onChange={handleChange}
+        error={errors.startDate}
       />
 
-      <select
-        name="department"
-        value={formData.department}
-        onChange={handleChange}
-      >
-        <option value="">Select Department</option>
-        {departments.map((dep) => (
-          <option key={dep} value={dep}>
-            {dep}
-          </option>
-        ))}
-      </select>
-
-      <input
+      <TextInput
         name="street"
-        placeholder="Street"
+        label="Street"
         value={formData.street}
         onChange={handleChange}
+        error={errors.street}
       />
-      <input
+
+      <TextInput
         name="city"
-        placeholder="City"
+        label="City"
         value={formData.city}
         onChange={handleChange}
+        error={errors.city}
       />
 
-      <select name="state" value={formData.state} onChange={handleChange}>
-        <option value="">Select State</option>
-        {states.map((st) => (
-          <option key={st} value={st}>
-            {st}
-          </option>
-        ))}
-      </select>
+      <SelectInput
+        name="state"
+        label="State"
+        options={states}
+        value={formData.state}
+        onChange={handleChange}
+        error={errors.state}
+      />
 
-      <input
+      <TextInput
         name="zipCode"
-        placeholder="Zip Code"
+        label="Zip Code"
         value={formData.zipCode}
         onChange={handleChange}
+        error={errors.zipCode}
+      />
+
+      <SelectInput
+        name="department"
+        label="Department"
+        options={departments}
+        value={formData.department}
+        onChange={handleChange}
+        error={errors.department}
       />
 
       <button type="submit">Save</button>
