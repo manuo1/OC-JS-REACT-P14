@@ -1,0 +1,62 @@
+(function injectEmployees() {
+  const departments = ["Engineering", "Sales", "Marketing", "Legal", "HR"];
+  const states = [
+  "California",
+  "Texas",
+  "New York",
+  "Florida",
+  "Alaska",
+  "Illinois",
+  "Pennsylvania",
+  "Ohio",
+  "Georgia",
+  "North Carolina"
+];
+  const dateOfBirth = [
+  "1965-05-15",
+  "1970-11-23",
+  "1982-07-30",
+  "1985-03-10",
+  "1990-09-18",
+  "1995-12-03",
+  "1998-06-25",
+  "2000-08-14",
+  "2002-04-28",
+  "2005-01-07"
+];
+const startDates = [
+  "2023-07-23",
+  "2023-05-15",
+  "2023-03-10",
+  "2023-01-22",
+  "2022-12-05",
+  "2022-10-18",
+  "2022-08-30",
+  "2022-06-12",
+  "2022-04-25",
+  "2022-02-08"
+];
+
+  function generateEmployees(count = 30) {
+    return Array.from({ length: count }, (_, i) => ({
+      firstName: `John${i + 1}`,
+      lastName: `Doe${i + 1}`,
+      dateOfBirth: dateOfBirth[i % dateOfBirth.length], 
+      startDate: startDates[i % startDates.length],
+      street: `${i + 1} Main Street`,
+      city: `Sample City ${i + 1}`,
+      state: states[i % states.length],
+      zipCode: `90${String(i + 1).padStart(3, "0")}`,
+      department: departments[i % departments.length],
+    }));
+  }
+
+  const employees = generateEmployees(500);
+  const zustandPayload = {
+    state: { employees },
+    version: 0,
+  };
+
+  localStorage.setItem("hrnet-employees", JSON.stringify(zustandPayload));
+  console.log(`${employees.length} employés injectés`);
+})();
