@@ -6,7 +6,7 @@ import styles from "./EmployeeForm.module.scss";
 import states from "../data/states";
 import departments from "../data/departments";
 
-function EmployeeForm() {
+function EmployeeForm({ onSubmitSuccess }) {
   const { addEmployee } = useEmployeeStore();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -37,6 +37,9 @@ function EmployeeForm() {
     }
 
     addEmployee(formData);
+    if (onSubmitSuccess) {
+      onSubmitSuccess();
+    }
     setFormData({
       firstName: "",
       lastName: "",

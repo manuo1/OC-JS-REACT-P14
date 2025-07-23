@@ -7,7 +7,7 @@ function Layout() {
       <header className={styles.header}>
         <nav className={styles.nav}>
           <Link to="/">HRnet</Link>
-          <Link to="/employees">Employee List</Link>
+          <Link to="/employees">View Current Employees</Link>
         </nav>
       </header>
 
