@@ -21,10 +21,13 @@ function EmployeeListPage() {
 
   // Pre-compute search text for each employee to avoid expensive join operations on every filter
   const employeesWithSearchText = useMemo(() => {
-    return employees.map((employee) => ({
-      ...employee,
-      searchText: Object.values(employee).join(" ").toLowerCase(),
-    }));
+    return employees.map((employee) => {
+      const { id: _id, ...searchableFields } = employee; // Exclude id from search
+      return {
+        ...employee,
+        searchText: Object.values(searchableFields).join(" ").toLowerCase(),
+      };
+    });
   }, [employees]);
 
   // Filter employees by search term (case insensitive)

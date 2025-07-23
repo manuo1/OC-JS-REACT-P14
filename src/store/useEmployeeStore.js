@@ -7,7 +7,13 @@ const useEmployeeStore = create(
       employees: [],
       addEmployee: (employee) =>
         set((state) => ({
-          employees: [...state.employees, employee],
+          employees: [
+            ...state.employees,
+            {
+              ...employee,
+              id: crypto.randomUUID(), // Add unique ID for each employee
+            },
+          ],
         })),
     }),
     {

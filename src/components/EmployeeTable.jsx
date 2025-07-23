@@ -46,8 +46,8 @@ function EmployeeTable({ employees, sortKey, sortDirection, onSortChange }) {
         </tr>
       </thead>
       <tbody>
-        {employees.map((emp, i) => (
-          <tr key={i}>
+        {employees.map((emp) => (
+          <tr key={emp.id}>
             <td>{emp.firstName}</td>
             <td>{emp.lastName}</td>
             <td>{emp.dateOfBirth}</td>
