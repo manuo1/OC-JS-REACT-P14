@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import useEmployeeStore from "../store/useEmployeeStore";
 import EmployeeTable from "../components/EmployeeTable";
 import PaginationNav from "../components/PaginationNav";
@@ -19,10 +19,17 @@ function EmployeeListPage() {
   const [sortKey, setSortKey] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc"); // "asc" or "desc"
 
+  // Pre-compute search text for each employee to avoid expensive join operations on every filter
+  const employeesWithSearchText = useMemo(() => {
+    return employees.map((employee) => ({
+      ...employee,
+      searchText: Object.values(employee).join(" ").toLowerCase(),
+    }));
+  }, [employees]);
+
   // Filter employees by search term (case insensitive)
-  const filteredEmployees = employees.filter((employee) => {
-    const employeeText = Object.values(employee).join(" ").toLowerCase();
-    return employeeText.includes(searchTerm.toLowerCase());
+  const filteredEmployees = employeesWithSearchText.filter((employee) => {
+    return employee.searchText.includes(searchTerm.toLowerCase());
   });
 
   // Sort filtered employees
