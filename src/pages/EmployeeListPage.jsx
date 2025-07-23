@@ -15,28 +15,67 @@ function EmployeeListPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [tableSize, setTableSize] = useState(TABLE_SIZES[0]); // Default 10
 
+  // Sort state
+  const [sortKey, setSortKey] = useState(null);
+  const [sortDirection, setSortDirection] = useState("asc"); // "asc" or "desc"
+
   // Filter employees by search term (case insensitive)
   const filteredEmployees = employees.filter((employee) => {
     const employeeText = Object.values(employee).join(" ").toLowerCase();
     return employeeText.includes(searchTerm.toLowerCase());
   });
 
-  const totalEntries = filteredEmployees.length;
+  // Sort filtered employees
+  const sortedEmployees = [...filteredEmployees];
+  if (sortKey) {
+    sortedEmployees.sort((a, b) => {
+      let aVal = a[sortKey];
+      let bVal = b[sortKey];
+
+      // Handle undefined or null values
+      if (aVal === undefined || aVal === null) aVal = "";
+      if (bVal === undefined || bVal === null) bVal = "";
+
+      // For dates, compare them as Date objects
+      if (sortKey === "dateOfBirth" || sortKey === "startDate") {
+        aVal = new Date(aVal);
+        bVal = new Date(bVal);
+      }
+
+      if (aVal < bVal) return sortDirection === "asc" ? -1 : 1;
+      if (aVal > bVal) return sortDirection === "asc" ? 1 : -1;
+      return 0;
+    });
+  }
+
+  const totalEntries = sortedEmployees.length;
   const totalPages = Math.ceil(totalEntries / tableSize);
 
   useEffect(() => {
-    document.title = "Current Employees";
+    document.title = "HRnet - Current Employees";
   }, []);
 
-  // Reset to first page on page size or search term change
+  // Reset to first page on page size, search term, or sort change
   useEffect(() => {
     setCurrentPage(1);
-  }, [tableSize, searchTerm]);
+  }, [tableSize, searchTerm, sortKey, sortDirection]);
 
   const startIndex = (currentPage - 1) * tableSize;
   const endIndex = Math.min(startIndex + tableSize, totalEntries);
 
-  const currentEmployees = filteredEmployees.slice(startIndex, endIndex);
+  const currentEmployees = sortedEmployees.slice(startIndex, endIndex);
+
+  // Handle sorting when clicking on column headers
+  const handleSortChange = (key) => {
+    if (sortKey === key) {
+      // Toggle sort direction
+      setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
+    } else {
+      // New column sort, default to ascending
+      setSortKey(key);
+      setSortDirection("asc");
+    }
+  };
 
   return (
     <main className={styles.page}>
@@ -52,7 +91,12 @@ function EmployeeListPage() {
         <SearchBar value={searchTerm} onChange={setSearchTerm} />
       </div>
 
-      <EmployeeTable employees={currentEmployees} />
+      <EmployeeTable
+        employees={currentEmployees}
+        sortKey={sortKey}
+        sortDirection={sortDirection}
+        onSortChange={handleSortChange}
+      />
 
       <EntriesInfo
         startIndex={startIndex}
