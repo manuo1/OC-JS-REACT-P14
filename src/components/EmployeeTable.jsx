@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./EmployeeTable.module.scss";
+import SearchBar from "./SearchBar";
 
 function EmployeeTable({ employees }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,13 +12,7 @@ function EmployeeTable({ employees }) {
 
   return (
     <div className={styles.wrapper}>
-      <input
-        type="text"
-        placeholder="Search employees..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className={styles.search}
-      />
+      <SearchBar value={searchTerm} onChange={setSearchTerm} />
 
       <table className={styles.table}>
         <thead>
