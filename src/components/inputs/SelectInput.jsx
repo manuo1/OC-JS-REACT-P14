@@ -13,7 +13,6 @@ function SelectInput({ label, name, value, onChange, options, error }) {
         onChange={onChange}
         className={`${styles.select} ${error ? styles.invalid : ""}`}
         aria-invalid={!!error}
-        required
       >
         <option value="" disabled hidden>
           -- Select an option --

@@ -14,7 +14,6 @@ function TextInput({ label, name, value, onChange, error, type = "text" }) {
         onChange={onChange}
         className={`${styles.input} ${error ? styles.invalid : ""}`}
         aria-invalid={!!error}
-        required
       />
       {error && <span className={styles.error}>{error}</span>}
     </div>

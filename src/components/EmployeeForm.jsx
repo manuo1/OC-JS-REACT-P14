@@ -25,6 +25,9 @@ function EmployeeForm({ onSubmitSuccess }) {
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Clear error for the changed field
+    setErrors((prev) => ({ ...prev, [name]: undefined }));
   }
 
   function handleSubmit(e) {
