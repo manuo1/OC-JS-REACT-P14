@@ -1,23 +1,40 @@
 .field {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-label {
-  margin-bottom: 0.25rem;
-  font-weight: bold;
+.label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1f2937;
 }
 
-input,
-select {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #111827;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  outline: none;
+}
+
+.invalid {
+  border-color: #ef4444;
+  background-color: #fef2f2;
 }
 
 .error {
-  color: red;
+  color: #dc2626;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
 }
