@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import useEmployeeStore from "../store/useEmployeeStore";
 import EmployeeForm from "../components/EmployeeForm";
 import Modal from "../components/Modal";
+import styles from "./CreateEmployeePage.module.scss";
 
 function CreateEmployeePage() {
   const { addEmployee } = useEmployeeStore();
@@ -12,12 +13,16 @@ function CreateEmployeePage() {
   }, []);
 
   return (
-    <div>
-      <h2>Create Employee</h2>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1>Create Employee</h1>
+      </header>
+
       <EmployeeForm
         onSubmitSuccess={() => setShowModal(true)}
         onSubmit={addEmployee}
       />
+
       {showModal && (
         <Modal
           message="Employee successfully created!"

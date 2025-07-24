@@ -108,38 +108,45 @@ function EmployeeForm({ onSubmitSuccess }) {
         error={errors.startDate}
       />
 
-      <TextInput
-        name="street"
-        label="Street"
-        value={formData.street}
-        onChange={handleChange}
-        error={errors.street}
-      />
+      <div className={styles.addressSection}>
+        <div className={styles.sectionHeader}>
+          <div className={styles.sectionBar}></div>
+          <h3 className={styles.sectionTitle}>Address</h3>
+        </div>
 
-      <TextInput
-        name="city"
-        label="City"
-        value={formData.city}
-        onChange={handleChange}
-        error={errors.city}
-      />
+        <TextInput
+          name="street"
+          label="Street"
+          value={formData.street}
+          onChange={handleChange}
+          error={errors.street}
+        />
 
-      <SelectInput
-        name="state"
-        label="State"
-        options={states}
-        value={formData.state}
-        onChange={handleChange}
-        error={errors.state}
-      />
+        <TextInput
+          name="city"
+          label="City"
+          value={formData.city}
+          onChange={handleChange}
+          error={errors.city}
+        />
 
-      <TextInput
-        name="zipCode"
-        label="Zip Code"
-        value={formData.zipCode}
-        onChange={handleChange}
-        error={errors.zipCode}
-      />
+        <SelectInput
+          name="state"
+          label="State"
+          options={states}
+          value={formData.state}
+          onChange={handleChange}
+          error={errors.state}
+        />
+
+        <TextInput
+          name="zipCode"
+          label="Zip Code"
+          value={formData.zipCode}
+          onChange={handleChange}
+          error={errors.zipCode}
+        />
+      </div>
 
       <SelectInput
         name="department"

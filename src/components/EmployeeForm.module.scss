@@ -19,3 +19,32 @@ button {
 button:hover {
   background-color: #1e40af;
 }
+
+.addressSection {
+  display: flex;
+  flex-direction: column;
+  background-color: #e8ebf0;
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  gap: 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+}
+
+.sectionBar {
+  width: 4px;
+  height: 1.5rem;
+  background-color: #2563eb;
+  border-radius: 2px;
+  margin-right: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1f2937;
+}
