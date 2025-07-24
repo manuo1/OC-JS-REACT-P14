@@ -1,17 +1,12 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
 import styles from "./Layout.module.scss";
 
 function Layout() {
   return (
-    <div>
-      <header className={styles.header}>
-        <nav className={styles.nav}>
-          <Link to="/">HRnet</Link>
-          <Link to="/employees">View Current Employees</Link>
-        </nav>
-      </header>
-
-      <main>
+    <div className={styles.layout}>
+      <Navbar />
+      <main className={styles.main}>
         <Outlet />
       </main>
     </div>
