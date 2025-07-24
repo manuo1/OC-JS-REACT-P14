@@ -1,17 +1,15 @@
+@use "../styles/colors" as colors;
+
 .container {
   max-width: 800px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
+  margin: 0 auto;
 }
 
 .header {
-  margin-bottom: 2rem;
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1f2937;
   margin-bottom: 0.5rem;
 }

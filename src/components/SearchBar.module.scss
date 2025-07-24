@@ -1,6 +1,20 @@
+@use "../styles/colors";
+
 .search {
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
   width: 300px;
   max-width: 100%;
+  border: 1px solid colors.$color-border;
+  border-radius: 0.5rem;
+  background-color: colors.$color-background-light;
+  color: colors.$color-text-dark;
+  box-shadow: 0 1px 2px colors.$color-shadow;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search:focus {
+  border-color: colors.$color-button-lavender;
+  box-shadow: 0 0 0 3px colors.$color-shadow-lavender;
+  outline: none;
 }

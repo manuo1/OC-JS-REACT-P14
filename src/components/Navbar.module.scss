@@ -1,16 +1,22 @@
+@use "../styles/colors" as colors;
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #1f2937;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: colors.$color-background;
+  color: colors.$color-text-dark;
+  box-shadow: 0 2px 6px colors.$color-shadow;
+  border-bottom: 1px solid colors.$color-border;
 }
 
 .logo {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
+  color: colors.$color-accent-coral;
+  cursor: default;
+  user-select: none;
 }
 
 .links {
@@ -19,11 +25,15 @@
 }
 
 .links a {
-  color: #f9fafb;
+  color: colors.$color-text-dark;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-.links a:hover {
+.links a:hover,
+.links a:focus {
+  color: colors.$color-accent-coral;
   text-decoration: underline;
+  outline: none;
 }

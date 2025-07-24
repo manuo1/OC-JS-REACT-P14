@@ -1,16 +1,27 @@
+@use "../styles/colors" as colors;
+
 .arrows {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 2px;
+  user-select: none;
 }
 
 .arrow {
   display: block;
-  fill: #bbb;
-  transition: fill 0.2s ease;
+  fill: colors.$color-border;
+  transition: fill 0.25s ease, transform 0.2s ease;
+  cursor: pointer;
+  width: 0.75rem;
+  height: 0.75rem;
+
+  &:hover {
+    fill: colors.$color-button-lavender;
+  }
 }
 
 .active {
-  fill: #333;
+  fill: colors.$color-accent-coral;
 }

@@ -1,3 +1,5 @@
+@use "../styles/colors" as colors;
+
 .overlay {
   position: fixed;
   top: 0;
@@ -12,24 +14,28 @@
 }
 
 .modal {
-  background: white;
+  background: colors.$color-background-light;
   padding: 2rem;
   border-radius: 0.5rem;
   min-width: 300px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px colors.$color-shadow;
   text-align: center;
+  color: colors.$color-text-dark;
 }
 
 .closeBtn {
   margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
+  padding: 0.75rem 1.25rem;
+  background-color: colors.$color-button-lavender;
   border: none;
-  color: white;
-  border-radius: 0.25rem;
+  color: colors.$color-text-light;
+  border-radius: 0.5rem;
   cursor: pointer;
-}
+  font-weight: 600;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
 
-.closeBtn:hover {
-  background-color: #0056b3;
+  &:hover {
+    background-color: colors.$color-accent-coral;
+    box-shadow: 0 0 6px colors.$color-accent-coral;
+  }
 }

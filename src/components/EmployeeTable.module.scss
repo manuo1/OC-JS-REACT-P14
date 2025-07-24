@@ -1,29 +1,4 @@
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 0.5rem;
-    text-align: left;
-  }
-
-  thead {
-    background-color: #e6e0e0;
-  }
-
-  tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-}
-
-.empty {
-  font-style: italic;
-  color: #888;
-  margin-top: 1rem;
-}
+@use "../styles/colors";
 
 .wrapper {
   display: flex;
@@ -38,10 +13,42 @@
   gap: 1rem;
 }
 
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+
+  th,
+  td {
+    border: 1px solid colors.$color-border;
+    padding: 0.5rem;
+    text-align: left;
+    transition: background-color 0.2s ease;
+  }
+
+  thead {
+    background-color: colors.$color-button-lavender;
+    color: colors.$color-text-light;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: colors.$color-background-light;
+  }
+
+  tbody tr:hover {
+    background-color: colors.$color-shadow-lavender;
+  }
+  th:hover {
+    background-color: colors.$color-accent-coral;
+  }
+}
+
 .empty {
   text-align: center;
   padding: 1rem;
-  color: #888;
+  font-style: italic;
+  color: colors.$color-text-dark;
+  opacity: 0.6;
 }
 
 .sortButton {
