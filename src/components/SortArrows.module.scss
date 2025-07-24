@@ -1,9 +1,12 @@
 .arrows {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 2px;
 }
 
 .arrow {
+  display: block;
   fill: #bbb;
   transition: fill 0.2s ease;
 }

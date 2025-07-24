@@ -8,25 +8,24 @@ function SortArrows({ direction }) {
           direction === "asc" ? styles.active : ""
         }`}
         xmlns="http://www.w3.org/2000/svg"
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
+        viewBox="0 0 8 4"
+        width="12"
+        height="6"
         aria-hidden="true"
       >
-        <path d="M12 8l6 6H6l6-6z" />
+        <path d="M4 0L0 4h8L4 0z" />
       </svg>
-
       <svg
         className={`${styles.arrow} ${
           direction === "desc" ? styles.active : ""
         }`}
         xmlns="http://www.w3.org/2000/svg"
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
+        viewBox="0 0 8 4"
+        width="12"
+        height="6"
         aria-hidden="true"
       >
-        <path d="M12 16l-6-6h12l-6 6z" />
+        <path d="M4 4L0 0h8L4 4z" />
       </svg>
     </span>
   );

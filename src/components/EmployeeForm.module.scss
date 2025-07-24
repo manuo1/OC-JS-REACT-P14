@@ -6,7 +6,7 @@
   gap: 1rem;
 }
 
-button {
+.saveButton {
   padding: 0.75rem;
   background-color: #2563eb;
   color: white;
@@ -16,7 +16,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.saveButton:hover {
   background-color: #1e40af;
 }
 

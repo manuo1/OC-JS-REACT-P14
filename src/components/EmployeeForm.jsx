@@ -157,7 +157,9 @@ function EmployeeForm({ onSubmitSuccess }) {
         error={errors.department}
       />
 
-      <button type="submit">Save</button>
+      <button className={styles.saveButton} type="submit">
+        Save
+      </button>
     </form>
   );
 }
