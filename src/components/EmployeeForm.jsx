@@ -1,7 +1,9 @@
 import { useState } from "react";
+import Dropdown from "oc-js-react-p14-dropdown";
+import "oc-js-react-p14-dropdown/dist/oc-js-react-p14-dropdown.css";
+import "./LibDropdown.override.scss";
 import useEmployeeStore from "../store/useEmployeeStore";
-import TextInput from "./inputs/TextInput";
-import SelectInput from "./inputs/SelectInput";
+import TextInput from "./TextInput";
 import styles from "./EmployeeForm.module.scss";
 import states from "../data/states";
 import departments from "../data/departments";
@@ -130,7 +132,7 @@ function EmployeeForm({ onSubmitSuccess }) {
           error={errors.city}
         />
 
-        <SelectInput
+        <Dropdown
           name="state"
           label="State"
           options={states}
@@ -148,7 +150,7 @@ function EmployeeForm({ onSubmitSuccess }) {
         />
       </div>
 
-      <SelectInput
+      <Dropdown
         name="department"
         label="Department"
         options={departments}

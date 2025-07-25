@@ -1,19 +1,12 @@
-@use "../../styles/colors";
+@use "../styles/colors";
 
-.field {
-  display: flex;
-  flex-direction: column;
-}
-
-.label {
-  margin-bottom: 0.5rem;
+.lib-dropdown-label {
   font-weight: 600;
   font-size: 0.95rem;
   color: colors.$color-taupe;
 }
 
-.select {
-  padding: 0.75rem 1rem;
+.lib-dropdown {
   border: 1px solid colors.$color-border;
   border-radius: 0.5rem;
   font-size: 1rem;
@@ -21,25 +14,19 @@
   color: colors.$color-text-dark;
   box-shadow: 0 1px 2px colors.$color-shadow;
   transition: border 0.2s ease, box-shadow 0.2s ease;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg fill='%238B5E3C' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1rem;
 }
-
-.select:focus {
+.lib-dropdown:focus {
   border-color: colors.$color-button-lavender;
   box-shadow: 0 0 0 3px colors.$color-shadow-lavender;
   outline: none;
 }
 
-.invalid {
+.lib-dropdown-invalid {
   border-color: colors.$color-accent-coral;
   background-color: colors.$color-background-light;
 }
 
-.error {
+.lib-dropdown-error {
   color: colors.$color-accent-coral;
   font-size: 0.875rem;
   margin-top: 0.35rem;
