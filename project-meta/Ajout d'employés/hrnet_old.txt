@@ -51,7 +51,7 @@ const startDates = [
     }));
   }
 
-  const employees = generateEmployees(500);
+  const employees = generateEmployees(999);
   localStorage.setItem("employees", JSON.stringify(employees));
   console.log(`${employees.length} employés injectés`);
 })();

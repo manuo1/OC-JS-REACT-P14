@@ -52,7 +52,7 @@
     }));
   }
 
-  const employees = generateEmployees(500);
+  const employees = generateEmployees(999);
   const zustandPayload = {
     state: { employees },
     version: 0,
